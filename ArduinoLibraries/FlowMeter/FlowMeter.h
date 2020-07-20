@@ -14,7 +14,7 @@ class FlowMeter {
         byte pulse1Sec;
         float flowRate;
         unsigned int flowMilliLitres;
-        unsigned long totalMilliLitres;
+        uint8_t totalMilliLitres;
         bool flowDetectedFlag;
 
     public:
@@ -22,10 +22,12 @@ class FlowMeter {
         ~FlowMeter();
         float getCurrentFlowRate(){return flowRate;}
         unsigned int getCurrentFlowMilliLiters(){return flowMilliLitres;}
-        unsigned int getCurrentTotalMilliLiters(){return totalMilliLitres;}
+        uint8_t getCurrentTotalMilliLiters(){return totalMilliLitres;}
+        void setCurrentTotalMilliLiters(float value){totalMilliLitres = value;}
         float getCalibFactor(){return calibrationFactor;}
         int getCurrentInterval(){return currentInterval;}
         bool isflowDetected() {return flowDetectedFlag;}
+        void switchFlowDetectedFlag(){flowDetectedFlag = !flowDetectedFlag;}
         void increasePulseCount(){pulseCount++;}
         void listenToWaterFlow();
         void printLastFlowRead();
